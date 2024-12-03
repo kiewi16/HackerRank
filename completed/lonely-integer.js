@@ -69,3 +69,9 @@ function returnLoneInteger3(numbers) {
 }
 console.log(returnLoneInteger3(numbers))
 
+function returnLoneInteger4(numbers) {
+   return numbers.find(number => {
+        return numbers.indexOf(number) === numbers.lastIndexOf(number)
+    })
+}
+console.log(returnLoneInteger4(numbers))
