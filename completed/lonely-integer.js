@@ -18,25 +18,25 @@ let numbers = [1,2,3,4,3,2,1]
         // return loneInteger make sure to parseInt because value pushed to loneInteger will be a string
 // output: one integer
 
-// function returnLoneInteger(numbers) {
-//     let integerCount = numbers.reduce((acc, num) => {
-//         if (!acc[num]) {
-//             acc[num] = 1
-//         } else {
-//             acc[num] ++
-//         }
-//     return acc
-//     }, {})
-//     let integersAndCounts = Object.entries(integerCount).flat()
-//     let loneInteger = []
-//     integersAndCounts.forEach((integer, index) => {
-//         if (integer === 1) {
-//             loneInteger.push(integersAndCounts[index - 1])
-//         }
-//     })
-//     return parseInt(loneInteger)
-// }
-// console.log(returnLoneInteger(numbers))
+function returnLoneInteger(numbers) {
+    let integerCount = numbers.reduce((acc, num) => {
+        if (!acc[num]) {
+            acc[num] = 1
+        } else {
+            acc[num] ++
+        }
+    return acc
+    }, {})
+    let integersAndCounts = Object.entries(integerCount).flat()
+    let loneInteger = []
+    integersAndCounts.forEach((integer, index) => {
+        if (integer === 1) {
+            loneInteger.push(integersAndCounts[index - 1])
+        }
+    })
+    return parseInt(loneInteger)
+}
+console.log(returnLoneInteger(numbers))
 
 function returnLoneInteger2(numbers) {
     let integerCount = numbers.reduce((acc, num) => {
@@ -50,8 +50,22 @@ function returnLoneInteger2(numbers) {
 
     for (let x in integerCount) {
         if (integerCount[x] === 1) {
-            return x
+            return parseInt(x)
         }
     }
 }
 console.log(returnLoneInteger2(numbers))
+
+function returnLoneInteger3(numbers) {
+    let integerCount = numbers.reduce((acc, num) => {
+        if (!acc[num]) {
+            acc[num] = 1
+        } else {
+            acc[num] ++
+        }
+    return acc
+    }, {})
+    return numbers.find(number => integerCount[number] === 1)
+}
+console.log(returnLoneInteger3(numbers))
+
